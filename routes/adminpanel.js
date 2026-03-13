@@ -111,9 +111,10 @@ router.get('/getcategory', async (req, res) => {
         if (!admin) return res.status(404).json({ success: false, message: 'Admin not found' });
 
         // Return categories with image path
+        backend_uri = process.env.BACKEND_URL
         const categories = admin.categories.map(cat => ({
             name: cat.name,
-            image: cat.image ? `http://localhost:5000/uploads/categories/${cat.image}` : null
+            image: cat.image ? `${backend_uri}/uploads/categories/${cat.image}` : null
         }));
 
         res.json(categories);
