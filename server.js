@@ -24,6 +24,8 @@ app.use(helmet({
 
 // ✅ Compression
 app.use(compression());
+// Render ke proxy ke liye zarori
+app.set('trust proxy', 1);
 
 // ✅ CORS - restrict to your frontend domain in production
 const allowedOrigins = process.env.ALLOWED_ORIGINS
