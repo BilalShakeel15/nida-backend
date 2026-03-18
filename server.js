@@ -61,8 +61,8 @@ const authLimiter = rateLimit({
 app.use('/api/auth/', authLimiter);
 
 // Static files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use('/uploads/categories', express.static(path.join(__dirname, 'uploads/categories')));
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// app.use('/uploads/categories', express.static(path.join(__dirname, 'uploads/categories')));
 
 // ✅ Keep-alive ping route (for Render free tier)
 app.get('/ping', (req, res) => {
