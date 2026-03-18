@@ -70,19 +70,7 @@ app.get('/ping', (req, res) => {
 });
 
 // ✅ Self-ping every 30 seconds (keeps Render from sleeping)
-const https = require('https');
-const http = require('http');
-const BACKEND_URL = process.env.BACKEND_URL || `http://localhost:${PORT}`;
 
-setInterval(() => {
-    const url = new URL(`${BACKEND_URL}/ping`);
-    const requester = url.protocol === 'https:' ? https : http;
-    requester.get(url.toString(), (res) => {
-        console.log(`🔁 Self-ping: ${res.statusCode}`);
-    }).on('error', (err) => {
-        console.error('❌ Self-ping failed:', err.message);
-    });
-}, 30000);
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
